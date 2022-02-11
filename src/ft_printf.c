@@ -1,31 +1,84 @@
-#include <stdarg.h>
-#include <stdio.h>
-#include "../libft/ft_atoi.c"
 
-int	ftest(int num_args, ...);
+#include <stdio.h>
+#include "ft_printf.h"
+
+
+int	ft_printf(const char *input, ...);
+int	ft_process_args(va_list *ap, char flag);
 
 int	main(int ac, char **av)
 {
-	printf("Soustraction : %d.\n", ftest((ac - 1), ft_atoi(av[1]), ft_atoi(av[2]), ft_atoi(av[3])));
-	return 0;
+	(void)ac;
+	int i;
+
+	i = 2;
+	ft_printf(av[1], i);
+	printf("vs printf : %p\n", &i);
+//	ft_printf(av[1], i);
+
+
+	return (0);
 }
 
-int	ftest(int num_args, ...)
-{
-	int val = 0;
-	int i = 0;
-	va_list ap;
 
-	va_start(ap, num_args);
-	val += va_arg(ap, int);
-	printf("ac = %d\nval = %d\n", num_args, val);
-	while (i < num_args - 1)
+
+
+int	ft_printf(const char *input, ...)
+{
+	va_list	ap;
+	int	writ;
+	int	i;
+
+	i = 0;
+	va_start(ap, input);
+	writ = 0;
+	while (input[i])
 	{
-		val -= va_arg(ap, int);
-		printf("val = %d\n", val);
+		if (input[i] == '%')
+		{
+			if (input[++i] == '%')
+			{
+				write(1, "%", 1);
+				writ++;
+			}
+			else
+			writ += ft_process_args(&ap, input[i]);
+		}
+		else
+		{
+			write(1, &input[i], 1);
+			writ++;
+		}
 		i++;
 	}
 	va_end(ap);
-
-	return val;
+	printf("\nnbr de char ecrit: %d\n", writ);
+	return (writ);
 }
+
+
+
+
+
+int	ft_process_args(va_list *ap, char flag)
+{
+	const s_fn	library[9] = {
+		{ .flag = 'c', .function = &wrapper_c },
+		{ .flag = 's', .function = &wrapper_s },
+/*		{ .flag = 'p', .function = &wrapper_p }, A CASTER EN SIZE_T
+                { .flag = 'd', .function = &wrapper_d },*/
+                { .flag = 'i', .function = &wrapper_i },
+                { .flag = 'u', .function = &wrapper_u },
+                { .flag = 'x', .function = &wrapper_lx },
+                { .flag = 'X', .function = &wrapper_ux },
+	};
+	int i;
+
+	i = 0;
+	while (flag != library[i].flag && library[i].flag)
+		i++;
+	if (library[i].flag != '\0')
+		return (library[i].function(ap));
+	return (0);
+}
+
