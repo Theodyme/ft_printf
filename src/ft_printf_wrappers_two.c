@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strldup.c                                       :+:      :+:    :+:   */
+/*   ft_printf_wrappers_two.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 16:13:08 by flplace           #+#    #+#             */
-/*   Updated: 2021/01/29 16:13:23 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/14 18:15:55 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:15:57 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "ft_printf.h"
 
-char	*ft_strdup(const char *s1)
+int	wrapper_u(va_list *ap)
 {
-	char	*s2;
-	int		i;
+	return (ft_putnbr_uint(va_arg(*ap, int)));
+}
 
-	i = 0;
-	s2 = malloc(sizeof(char) * (ft_strlen((char *)s1) + 1));
-	if (!s2)
-		return (0);
-	while (s1[i])
-	{
-		s2[i] = s1[i];
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
+int	wrapper_lx(va_list *ap)
+{
+	return (ft_putnbr_base(va_arg(*ap, int), "0123456789abcdef"));
+}
+
+int	wrapper_ux(va_list *ap)
+{
+	return (ft_putnbr_base(va_arg(*ap, int), "0123456789ABCDEF"));
 }

@@ -1,33 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 18:10:05 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:10:32 by flplace          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
 
 int	ft_printf(const char *input, ...);
 int	ft_process_args(va_list *ap, char flag);
 
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
 	(void)ac;
+	(void)av;
 	char *i;
 
 	i = "coucou";
 	ft_printf("ft_printf : %p\n", i);
 	printf("vs printf : %p\n", i);
-//	ft_printf(av[1], i);
-
 
 	return (0);
-}
-
-
-
+}*/
 
 int	ft_printf(const char *input, ...)
 {
 	va_list	ap;
-	int	writ;
-	int	i;
+	int		writ;
+	int		i;
 
 	i = 0;
 	va_start(ap, input);
@@ -42,7 +48,7 @@ int	ft_printf(const char *input, ...)
 				writ++;
 			}
 			else
-			writ += ft_process_args(&ap, input[i]);
+				writ += ft_process_args(&ap, input[i]);
 		}
 		else
 		{
@@ -52,27 +58,22 @@ int	ft_printf(const char *input, ...)
 		i++;
 	}
 	va_end(ap);
-	printf("\nnbr de char ecrit: %d\n", writ);
 	return (writ);
 }
 
-
-
-
-
 int	ft_process_args(va_list *ap, char flag)
 {
-	const s_fn	library[9] = {
-		{ .flag = 'c', .function = &wrapper_c },
-		{ .flag = 's', .function = &wrapper_s },
-		{ .flag = 'p', .function = &wrapper_p }, /* CASTER EN SIZE_T */
-                { .flag = 'd', .function = &wrapper_i },
-                { .flag = 'i', .function = &wrapper_i },
-                { .flag = 'u', .function = &wrapper_u },
-                { .flag = 'x', .function = &wrapper_lx },
-                { .flag = 'X', .function = &wrapper_ux },
+	const t_fn	library[9] = {
+	{.flag = 'c', .function = &wrapper_c},
+	{.flag = 's', .function = &wrapper_s},
+	{.flag = 'p', .function = &wrapper_p},
+	{.flag = 'd', .function = &wrapper_i},
+	{.flag = 'i', .function = &wrapper_i},
+	{.flag = 'u', .function = &wrapper_u},
+	{.flag = 'x', .function = &wrapper_lx},
+	{.flag = 'X', .function = &wrapper_ux},
 	};
-	int i;
+	int			i;
 
 	i = 0;
 	while (flag != library[i].flag && library[i].flag)
@@ -81,4 +82,3 @@ int	ft_process_args(va_list *ap, char flag)
 		return (library[i].function(ap));
 	return (0);
 }
-

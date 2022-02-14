@@ -10,17 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_checkbase.c \
-		ft_putchar.c \
-		ft_putnbr_base.c \
-		ft_putnbr_uint.c \
-		ft_putptr.c \
-		ft_putstr.c \
-		ft_strlen.c \
+SRCS	=	libft/ft_checkbase.c \
+		libft/ft_putchar.c \
+		libft/ft_putnbr_base.c \
+		libft/ft_putnbr_uint.c \
+		libft/ft_putptr.c \
+		libft/ft_putstr.c \
+		libft/ft_strlen.c \
+		src/ft_printf.c \
+		src/ft_printf_wrappers_one.c \
+		src/ft_printf_wrappers_two.c \
 
 OBJ	= ${SRCS:.c=.o}
 
-NAME	= libft.a
+NAME	= libftprintf.a
 
 CC	= gcc
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 18:00:13 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:10:52 by flplace          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -5,16 +17,16 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 
-typedef int (*fn_type)(va_list *ap);
+typedef int	(*t_type)(va_list *ap);
 
-typedef struct s_fn
+typedef struct t_fn
 {
 	char	flag;
-	fn_type	function;
-}		s_fn;
+	t_type	function;
+}		t_fn;
 
-int     ft_printf(const char *input, ...);
-int     ft_process_args(va_list *ap, char flag);
+int	ft_printf(const char *input, ...);
+int	ft_process_args(va_list *ap, char flag);
 int	wrapper_c(va_list *ap);
 int	wrapper_i(va_list *ap);
 int	wrapper_lx(va_list *ap);
