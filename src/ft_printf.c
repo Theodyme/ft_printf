@@ -11,9 +11,17 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_printf(const char *input, ...);
 int	ft_process_args(va_list *ap, char flag);
+
+int	main(void)
+{
+	ft_printf("%u\n", -21);
+	printf("%x\n", -21);
+	return 1;
+}
 
 int	ft_printf(const char *input, ...)
 {

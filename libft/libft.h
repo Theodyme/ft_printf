@@ -27,6 +27,7 @@ int				ft_putnbr_uint(unsigned int nbr);
 int				ft_putptr(size_t hex, char *base);
 int				ft_putstr(char *s);
 int				ft_putnbr_base(int nbr, char *base);
+int				ft_putnbr_hex(unsigned int n, char *base);
 void			ft_putchar(char c);
 size_t			ft_strlen(const char *str);
 

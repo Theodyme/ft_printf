@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_wrappers_two.c                           :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 18:15:55 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/14 18:15:57 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/14 18:11:55 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:11:58 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <unistd.h>
+#include "libft.h"
 
-int	wrapper_u(va_list *ap)
+int	ft_putnbr_hex(unsigned int n, char *base)
 {
-	return (ft_putnbr_uint(va_arg(*ap, int)));
-}
+	int				cnt;
+	unsigned int				baselen;
 
-int	wrapper_lx(va_list *ap)
-{
-	return (ft_putnbr_hex(va_arg(*ap, unsigned int), "0123456789abcdef"));
-}
-
-int	wrapper_ux(va_list *ap)
-{
-	return (ft_putnbr_hex(va_arg(*ap, unsigned int), "0123456789ABCDEF"));
+	cnt = 0;
+	baselen = ft_strlen(base);
+	if (ft_checkbase(base))
+	{
+		if (n >= (unsigned int)baselen)
+			cnt += ft_putnbr_hex(n / baselen, base);
+		ft_putchar(base[(n % baselen)]);
+		cnt++;
+	}
+	return (cnt);
 }

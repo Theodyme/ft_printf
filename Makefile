@@ -13,6 +13,7 @@
 SRCS	=	libft/ft_checkbase.c \
 		libft/ft_putchar.c \
 		libft/ft_putnbr_base.c \
+		libft/ft_putnbr_hex.c \
 		libft/ft_putnbr_uint.c \
 		libft/ft_putptr.c \
 		libft/ft_putstr.c \
