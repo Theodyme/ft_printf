@@ -11,31 +11,17 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 #include "libft.h"
 
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putptr(size_t hex, char *base)
 {
-	unsigned int	n;
 	int				cnt;
-	int				baselen;
 
 	cnt = 0;
-	n = 0;
-	baselen = ft_strlen(base);
-	if (ft_checkbase(base))
-	{
-		if (nbr < 0)
-		{
-			ft_putchar('-');
-			cnt++;
-			n = -nbr;
-		}
-		else
-			n = nbr;
-		if (n >= (unsigned int)baselen)
-			cnt += ft_putnbr_base(n / baselen, base);
-		ft_putchar(base[(n % baselen)]);
-		cnt++;
-	}
+	if (hex >= 16)
+		cnt += ft_putptr(hex / 16, base);
+	ft_putchar(base[(hex % 16)]);
+	cnt++;
 	return (cnt);
 }

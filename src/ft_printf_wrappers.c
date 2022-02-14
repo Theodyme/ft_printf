@@ -29,6 +29,12 @@ int	wrapper_i(va_list *ap)
 	return (ft_putnbr_base(va_arg(*ap, int), "0123456789"));
 }
 
+int	wrapper_p(va_list *ap)
+{
+	write(1, "0x", 2);
+	return (ft_putptr((size_t)va_arg(*ap, void *), "0123456789abcdef"));
+}
+
 int	wrapper_u(va_list *ap)
 {
 	return (ft_putnbr_uint(va_arg(*ap, int)));

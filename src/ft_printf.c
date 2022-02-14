@@ -9,11 +9,11 @@ int	ft_process_args(va_list *ap, char flag);
 int	main(int ac, char **av)
 {
 	(void)ac;
-	int i;
+	char *i;
 
-	i = 2;
-	ft_printf(av[1], i);
-	printf("vs printf : %p\n", &i);
+	i = "coucou";
+	ft_printf("ft_printf : %p\n", i);
+	printf("vs printf : %p\n", i);
 //	ft_printf(av[1], i);
 
 
@@ -65,8 +65,8 @@ int	ft_process_args(va_list *ap, char flag)
 	const s_fn	library[9] = {
 		{ .flag = 'c', .function = &wrapper_c },
 		{ .flag = 's', .function = &wrapper_s },
-/*		{ .flag = 'p', .function = &wrapper_p }, A CASTER EN SIZE_T
-                { .flag = 'd', .function = &wrapper_d },*/
+		{ .flag = 'p', .function = &wrapper_p }, /* CASTER EN SIZE_T */
+                { .flag = 'd', .function = &wrapper_i },
                 { .flag = 'i', .function = &wrapper_i },
                 { .flag = 'u', .function = &wrapper_u },
                 { .flag = 'x', .function = &wrapper_lx },
