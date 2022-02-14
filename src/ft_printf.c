@@ -12,22 +12,8 @@
 
 #include "ft_printf.h"
 
-
 int	ft_printf(const char *input, ...);
 int	ft_process_args(va_list *ap, char flag);
-
-/*int	main(int ac, char **av)
-{
-	(void)ac;
-	(void)av;
-	char *i;
-
-	i = "coucou";
-	ft_printf("ft_printf : %p\n", i);
-	printf("vs printf : %p\n", i);
-
-	return (0);
-}*/
 
 int	ft_printf(const char *input, ...)
 {
