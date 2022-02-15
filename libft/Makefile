@@ -10,32 +10,32 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	srcs/ft_printf.c \
-		srcs/ft_printf_wrappers_one.c \
-		srcs/ft_printf_wrappers_two.c \
+SRCS	=	ft_checkbase.c \
+		ft_putchar.c \
+		ft_putnbr_base.c \
+		ft_putnbr_hex.c \
+		ft_putnbr_uint.c \
+		ft_putptr.c \
+		ft_putstr.c \
+		ft_strlen.c \
 
 OBJ	= ${SRCS:.c=.o}
 
-NAME	= libftprintf.a
+NAME	= libft.a
 
 CC	= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
-$(NAME):	${OBJ} libft/libft.a
+$(NAME):	${OBJ}
 	ar rc ${NAME} ${OBJ}
-
-libft/libft.a:
-	make -C libft
 
 all:	${NAME}
 
 clean:
-	make -C libft clean
 	rm -f ${OBJ}
 
 fclean:	clean
-	make -C libft fclean
 	rm -f ${NAME}
 
 re:	fclean all
