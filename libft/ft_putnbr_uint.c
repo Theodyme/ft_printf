@@ -20,7 +20,7 @@ int	ft_putnbr_uint(unsigned int nbr)
 	cnt = 0;
 	if (nbr >= 10)
 		cnt += ft_putnbr_uint(nbr / 10);
-	ft_putchar(nbr % 10);
+	ft_putchar((nbr % 10) + '0');
 	cnt++;
 	return (cnt);
 }

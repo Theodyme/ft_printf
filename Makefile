@@ -28,7 +28,7 @@ NAME	= libftprintf.a
 
 CC	= gcc
 
-CFLAGS	= -Wall -Wextra -Werror
+#CFLAGS	= -Wall -Wextra -Werror
 
 $(NAME):	${OBJ}
 	ar rc ${NAME} ${OBJ}
