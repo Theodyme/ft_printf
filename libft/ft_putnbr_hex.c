@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 18:11:55 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/14 18:11:58 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/16 15:49:31 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/16 15:49:33 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_putnbr_hex(unsigned int n, char *base)
 {
 	int				cnt;
-	unsigned int				baselen;
+	unsigned int	baselen;
 
 	cnt = 0;
 	baselen = ft_strlen(base);

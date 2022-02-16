@@ -6,7 +6,7 @@
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:10:05 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/14 18:10:32 by flplace          ###   ########.fr       */
+/*   Updated: 2022/02/16 15:48:22 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	ft_printf(const char *input, ...)
 	while (input[i])
 	{
 		if (input[i] == '%')
-		{
+		{/*
 			if (input[++i] == '%')
 			{
 				write(1, "%", 1);
 				writ++;
 			}
-			else
+			else*/
 				writ += ft_process_args(&ap, input[i]);
 		}
 		else
@@ -56,7 +56,8 @@ int	ft_printf(const char *input, ...)
 
 int	ft_process_args(va_list *ap, char flag)
 {
-	const t_fn	library[9] = {
+	const t_fn	library[10] = {
+	{.flag = '%', .function = &wrapper_percent},
 	{.flag = 'c', .function = &wrapper_c},
 	{.flag = 's', .function = &wrapper_s},
 	{.flag = 'p', .function = &wrapper_p},
