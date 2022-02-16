@@ -10,45 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_printf.h"
 
 int	ft_printf(const char *input, ...);
 int	ft_process_args(va_list *ap, char flag);
-/*
+
 int	main(void)
 {
-	ft_printf("%p\n", 17);
-	printf("%p\n", 17);
-	return 1;
-}*/
+	ft_printf("hello world%%\n");
+	printf("hello world%%\n");
+	return 0;
+}
 
 int	ft_printf(const char *input, ...)
 {
 	va_list	ap;
 	int		writ;
-	int		i;
 
-	i = 0;
 	va_start(ap, input);
 	writ = 0;
-	while (input[i])
+	while (*input)
 	{
-		if (input[i] == '%')
-		{/*
-			if (input[++i] == '%')
-			{
-				write(1, "%", 1);
-				writ++;
-			}
-			else*/
-				writ += ft_process_args(&ap, input[i]);
+		if (*input == '%')
+		{
+			writ += ft_process_args(&ap, *(++input));
 		}
 		else
 		{
-			write(1, &input[i], 1);
+			write(1, input, 1);
 			writ++;
 		}
-		i++;
+		input++;
 	}
 	va_end(ap);
 	return (writ);
@@ -56,8 +49,7 @@ int	ft_printf(const char *input, ...)
 
 int	ft_process_args(va_list *ap, char flag)
 {
-	const t_fn	library[10] = {
-	{.flag = '%', .function = &wrapper_percent},
+	const t_fn	library[9] = {
 	{.flag = 'c', .function = &wrapper_c},
 	{.flag = 's', .function = &wrapper_s},
 	{.flag = 'p', .function = &wrapper_p},
@@ -70,6 +62,11 @@ int	ft_process_args(va_list *ap, char flag)
 	int			i;
 
 	i = 0;
+	if (flag == '%')
+	{
+		write(1, "%", 1);
+		return (1);
+	}
 	while (flag != library[i].flag && library[i].flag)
 		i++;
 	if (library[i].flag != '\0')

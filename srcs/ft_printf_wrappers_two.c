@@ -27,9 +27,3 @@ int	wrapper_ux(va_list *ap)
 	return (ft_putnbr_hex(va_arg(*ap, unsigned int), "0123456789ABCDEF"));
 }
 
-int	wrapper_percent(va_list *ap)
-{
-	
-	write(1, "%", 1);
-	return (1);
-}

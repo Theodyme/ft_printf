@@ -13,6 +13,14 @@
 SRCS	=	srcs/ft_printf.c \
 		srcs/ft_printf_wrappers_one.c \
 		srcs/ft_printf_wrappers_two.c \
+		libft/ft_putchar.c \
+		libft/ft_putstr.c \
+		libft/ft_putptr.c \
+		libft/ft_putnbr_base.c \
+		libft/ft_putnbr_hex.c \
+		libft/ft_strlen.c \
+		libft/ft_checkbase.c \
+		libft/ft_putnbr_uint.c \
 
 OBJ	= ${SRCS:.c=.o}
 
@@ -22,11 +30,11 @@ CC	= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
-$(NAME):	${OBJ} libft/libft.a
+$(NAME):	${OBJ}
 	ar rc ${NAME} ${OBJ}
 
-libft/libft.a:
-	make -C libft
+#libft/libft.a:
+#	make -C libft
 
 all:	${NAME}
 
