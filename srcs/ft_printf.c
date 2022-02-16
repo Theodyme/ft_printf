@@ -10,18 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
 int	ft_printf(const char *input, ...);
 int	ft_process_args(va_list *ap, char flag);
 
-int	main(void)
+/*int	main(void)
 {
 	ft_printf("hello world%%\n");
 	printf("hello world%%\n");
 	return 0;
-}
+}*/
 
 int	ft_printf(const char *input, ...)
 {
