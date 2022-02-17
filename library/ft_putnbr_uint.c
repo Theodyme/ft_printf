@@ -1,40 +1,26 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkbase.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_uint.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 17:57:51 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/14 18:12:47 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/14 18:12:12 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:12:14 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_checkbase(char *base)
+#include "library.h"
+
+int	ft_putnbr_uint(unsigned int nbr)
 {
-	int	i;
-	int	j;
-	int	baselen;
+	int				cnt;
 
-	i = 0;
-	j = 1;
-	baselen = ft_strlen(base);
-	if (baselen == 0 || baselen == 1)
-		return (0);
-	while (base[i])
-	{
-		if (base[i] < 32 || base[i] > 126)
-			return (0);
-		if (base[i] == '-' || base[i] == '+')
-			return (0);
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+	cnt = 0;
+	if (nbr >= 10)
+		cnt += ft_putnbr_uint(nbr / 10);
+	ft_putchar((nbr % 10) + '0');
+	cnt++;
+	return (cnt);
 }

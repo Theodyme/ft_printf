@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 15:49:31 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/16 15:49:33 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/14 18:13:08 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:13:10 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#include "library.h"
 
-int	ft_putnbr_hex(unsigned int n, char *base)
+int	ft_putstr(char *s)
 {
-	int				cnt;
-	unsigned int	baselen;
+	int	cnt;
 
 	cnt = 0;
-	baselen = ft_strlen(base);
-	if (ft_checkbase(base))
+	if (!s)
 	{
-		if (n >= (unsigned int)baselen)
-			cnt += ft_putnbr_hex(n / baselen, base);
-		ft_putchar(base[(n % baselen)]);
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (*s)
+	{
+		ft_putchar(*s++);
 		cnt++;
 	}
 	return (cnt);

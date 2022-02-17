@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_uint.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 18:12:12 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/14 18:12:14 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/16 15:49:31 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/16 15:49:33 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#include "library.h"
 
-int	ft_putnbr_uint(unsigned int nbr)
+int	ft_putnbr_hex(unsigned int n, char *base)
 {
 	int				cnt;
+	unsigned int	baselen;
 
 	cnt = 0;
-	if (nbr >= 10)
-		cnt += ft_putnbr_uint(nbr / 10);
-	ft_putchar((nbr % 10) + '0');
-	cnt++;
+	baselen = ft_strlen(base);
+	if (ft_checkbase(base))
+	{
+		if (n >= (unsigned int)baselen)
+			cnt += ft_putnbr_hex(n / baselen, base);
+		ft_putchar(base[(n % baselen)]);
+		cnt++;
+	}
 	return (cnt);
 }

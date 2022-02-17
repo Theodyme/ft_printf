@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 18:13:08 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/14 18:13:10 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/14 18:11:36 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:11:40 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "library.h"
 
-int	ft_putstr(char *s)
+void	ft_putchar(char c)
 {
-	int	cnt;
-
-	cnt = 0;
-	if (!s)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (*s)
-	{
-		ft_putchar(*s++);
-		cnt++;
-	}
-	return (cnt);
+	write(1, &c, 1);
 }

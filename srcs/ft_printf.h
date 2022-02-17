@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include "../library/library.h"
 # include <unistd.h>
 
 typedef int	(*t_type)(va_list *ap);
@@ -31,7 +31,6 @@ int	wrapper_c(va_list *ap);
 int	wrapper_i(va_list *ap);
 int	wrapper_lx(va_list *ap);
 int	wrapper_p(va_list *ap);
-//int	wrapper_percent(va_list ap);
 int	wrapper_s(va_list *ap);
 int	wrapper_u(va_list *ap);
 int	wrapper_ux(va_list *ap);

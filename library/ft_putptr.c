@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 18:11:36 by flplace           #+#    #+#             */
-/*   Updated: 2022/02/14 18:11:40 by flplace          ###   ########.fr       */
+/*   Created: 2022/02/14 18:12:31 by flplace           #+#    #+#             */
+/*   Updated: 2022/02/14 18:12:34 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#include "library.h"
 
-void	ft_putchar(char c)
+int	ft_putptr(size_t hex, char *base)
 {
-	write(1, &c, 1);
+	int				cnt;
+
+	cnt = 0;
+	if (hex >= 16)
+		cnt += ft_putptr(hex / 16, base);
+	ft_putchar(base[(hex % 16)]);
+	cnt++;
+	return (cnt);
 }
